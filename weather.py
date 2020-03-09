@@ -4,7 +4,7 @@ import pyowm
 import os
 
 app = Flask(__name__)
-owmapikey='6628ad3fd90a97fb39ff9793c7569874' #or provide your key here
+owmapikey=6628ad3fd90a97fb39ff9793c7569874 #or provide your key here
 owm = pyowm.OWM(owmapikey)
 
 #geting and sending response to dialogflow
@@ -26,7 +26,8 @@ def webhook():
 #processing the request from dialogflow
 def processRequest(req):
     
-
+    result = req.get("result")
+    parameters = result.get("parameters")
     city = parameters.get("geo-city")
     observation = owm.weather_at_place(city)
     w = observation.get_weather()
