@@ -41,7 +41,7 @@ def processRequest(req):
     print(requestStatus['status'])
 
     if requestStatus['status'] == 200:
-        speech = "Welcome"
+        speech = "Welcome" + str(requestStatus['status'])
     else:
         speech = "Login Failed" 
 
