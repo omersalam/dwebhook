@@ -36,14 +36,14 @@ def processRequest(req):
 ##    parameterToPass = {'ph_no': phoneNumber , 'token' : '123456'}
 ##    parameterToPass = {'Authorization': 'token e89f01f5d23dd9c2172e788ade9f0e363190b843'}
 
-    request1 = requests.get(url)
+    request1 = requests.get(url, headers={'Authorization': 'Token e89f01f5d23dd9c2172e788ade9f0e363190b843'})
 ##    data = parameterToPass
     print(type(request1))
     requestStatus = request1.json()
-    print(requestStatus['detail'])
+    print(requestStatus['status'])
 
-    if requestStatus['detail'] == 'Authentication credentials were not provided.':
-        speech = "Welcome" + str(requestStatus['detail'])
+    if requestStatus['status'] == 200:
+        speech = "Welcome" + str(requestStatus['status'])
     else:
         speech = "Login Failed" 
 
