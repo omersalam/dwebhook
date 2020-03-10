@@ -49,7 +49,7 @@ def processRequest(req):
         speech = "Login Failed" + "Token is" + str(userAuthenticationToken)
 
     return {
-                "fulfillmentText": speech,
+        "fulfillmentText": speech,
         "source": "dialogflow-weather-by-satheshrgs"
     }
     
