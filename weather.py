@@ -2,6 +2,7 @@ from flask import Flask,request,make_response
 import os,json
 import pyowm
 import os
+import requests
 
 app = Flask(__name__)
 owmapikey='6628ad3fd90a97fb39ff9793c7569874' #or provide your key here
@@ -49,7 +50,7 @@ def processRequest(req):
     temp_max_fahrenheit=str(fahrenheit_result.get('temp_max'))
     url = 'http://20.46.150.26/api/users/resend_verification_code/'
     myobj = {'ph_no': '+923035588009'}
-##    requests.post(url, data = myobj)
+    requests.post(url, data = myobj)
 
     speech = "Today the weather in " + city + ": \n" + "Temperature in Celsius:\nMax temp :"+temp_max_celsius+".\nMin Temp :"+temp_min_celsius+".\nTemperature in Fahrenheit:\nMax temp :"+temp_max_fahrenheit+".\nMin Temp :"+temp_min_fahrenheit+".\nHumidity :"+humidity+".\nWind Speed :"+wind_speed+"\nLatitude :"+lat+".\n  Longitude :"+lon
     
