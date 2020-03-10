@@ -36,8 +36,15 @@ def processRequest(req):
     url = 'http://20.46.150.26/api/users/resend_verification_code/'
     myobj = {'ph_no': city}
 
-    requests.post(url, data = myobj)
-    speech = "Login sucessfull"
+    x = requests.post(url, data=myobj)
+    print(type(x))
+    res = x.json()
+    print(res['status'])
+
+    if res['status'] == 200:
+        speech = "Name: Aniq, Login sucessful"
+    else:
+        speech = "Login Failed"
 
     return {
         "fulfillmentText": speech,
