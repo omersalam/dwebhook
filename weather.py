@@ -35,7 +35,7 @@ def processRequest(req):
     url = 'http://20.46.150.26/iof/get_entities_list/?type_id=62&index_a=0&index_b=100'
 ##    parameterToPass = {'ph_no': phoneNumber , 'token' : '123456'}
 
-    request1 = requests.get(url, headers={'Authorization': 'Token e89f01f5d23dd9c2172e788ade9f0e363190b843'})
+    request1 = requests.get(url, head={'Authorization': 'Token e89f01f5d23dd9c2172e788ade9f0e363190b843'})
 ##    data = parameterToPass
     print(type(request1))
     requestStatus = request1.json()
