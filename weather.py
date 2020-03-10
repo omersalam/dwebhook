@@ -4,7 +4,7 @@ import pyowm
 import os
 import requests
 
-
+userAuthenticationToken = ''
 app = Flask(__name__)
 owmapikey='6628ad3fd90a97fb39ff9793c7569874' #or provide your key here
 owm = pyowm.OWM(owmapikey)
@@ -31,23 +31,25 @@ def processRequest(req):
     
     result = req.get("queryResult")
     parameters = result.get("parameters")
-    city = parameters.get("ph_no")
+    phoneNumber = parameters.get("ph_no")
 
-    url = 'http://20.46.150.26/api/users/resend_verification_code/'
-    myobj = {'ph_no': city}
+    url = 'http://20.46.150.26/api/users/custom_login_iop/'
+    parameterToPass = {'ph_no': phoneNumber, 'token' : '123456'}
 
-    x = requests.post(url, data=myobj)
-    print(type(x))
-    res = x.json()
-    print(res['status'])
+    requestStatus = requests.post(url, data = parameterToPass)
+    print(type(requestStatus))
+    requestStatus = requestStatus.json()
+    print(requestStatus['status'])
 
-    if res['status'] == 200:
-        speech = "Name: Aniq, Login sucessful"
+    if requestStatus['status'] == 200:
+        userAuthenticationToken = requestStatus['token']
+        speech = "Welcome" + str(requestStatus['first_name']) + "Token is" + str(userAuthenticationToken)
     else:
-        speech = "Login Failed"
+        userAuthenticationToken = '' 
+        speech = "Login Failed" + "Token is" + str(userAuthenticationToken)
 
     return {
-        "fulfillmentText": speech,
+                "fulfillmentText": speech,
         "source": "dialogflow-weather-by-satheshrgs"
     }
     
