@@ -43,7 +43,7 @@ def processRequest(req):
     print(requestStatus['detail'])
 
     if requestStatus['detail'] == 'Authentication credentials were not provided.':
-        speech = "Welcome" 
+        speech = "Welcome" + str(requestStatus['detail'])
     else:
         speech = "Login Failed" 
 
