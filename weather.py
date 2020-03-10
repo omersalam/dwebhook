@@ -4,7 +4,7 @@ import pyowm
 import os
 import requests
 
-##userAuthenticationToken = ''
+userAuthenticationToken = ''
 app = Flask(__name__)
 owmapikey='6628ad3fd90a97fb39ff9793c7569874' #or provide your key here
 owm = pyowm.OWM(owmapikey)
@@ -36,19 +36,20 @@ def processRequest(req):
     url = 'http://20.46.150.26/api/users/custom_login_iop/'
     parameterToPass = {'ph_no': phoneNumber, 'token' : '123456'}
 
-    request = requests.post(url, data = parameterToPass)
-    print(type(request))
-    requestStatus = request.json()
+    requestStatus = requests.post(url, data = parameterToPass)
+    print(type(requestStatus))
+    requestStatus = requestStatus.json()
     print(requestStatus['status'])
 
     if requestStatus['status'] == 200:
-##      userAuthenticationToken = requestStatus['token']
-        speech = "Welcome" + str(requestStatus['first_name'])
+        userAuthenticationToken = requestStatus['token']
+        speech = "Welcome" + str(requestStatus['first_name']) + "Token is" + str(userAuthenticationToken)
     else:
-        speech = "Login Failed
+        userAuthenticationToken = '' 
+        speech = "Login Failed" + "Token is" + str(userAuthenticationToken)
 
     return {
-        "fulfillmentText": speech,
+                "fulfillmentText": speech,
         "source": "dialogflow-weather-by-satheshrgs"
     }
     
