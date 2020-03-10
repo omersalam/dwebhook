@@ -12,36 +12,36 @@ owm = pyowm.OWM(owmapikey)
 #geting and sending response to dialogflow
 @app.route('/webhook', methods=['POST'])
 def webhook():
-    data = request.get_json(silent=True)
-    if data['queryResult']['queryText'] == 'yes':
-        reply = {
-            "fulfillmentText": "Ok. Tickets booked successfully.",
-        }
-        return jsonify(reply)
+    req = request.get_json(silent=True, force=True)
 
-    elif data['queryResult']['queryText'] == 'no':
-        reply = {
-            "fulfillmentText": "Ok. Booking cancelled.",
-        }
-        return jsonify(reply)
+    print("Request:")
+    print(json.dumps(req, indent=4))
+    
+    res = processRequest(req)
 
-###processing the request from dialogflow
-##def processRequest(req):
-##    
-##    result = req.get("queryResult")
-##    parameters = result.get("parameters")
-##    city = parameters.get("ph_no")
-##
-##    url = 'http://20.46.150.26/api/users/resend_verification_code/'
-##    myobj = {'ph_no': city}
-##
-##    requests.post(url, data = myobj)
-##    speech = "here1"
-##
-##    return {
-##        "fulfillmentText": speech,
-##        "source": "dialogflow-weather-by-satheshrgs"
-##    }
+    res = json.dumps(res, indent=4)
+    print(res)
+    r = make_response(res)
+    r.headers['Content-Type'] = 'application/json'
+    return r
+
+#processing the request from dialogflow
+def processRequest(req):
+    
+    result = req.get("queryResult")
+    parameters = result.get("parameters")
+    city = parameters.get("ph_no")
+
+    url = 'http://20.46.150.26/api/users/resend_verification_code/'
+    myobj = {'ph_no': city}
+
+    x = requests.post(url, data = myobj)
+    speech = "here1"
+
+    return {
+        "fulfillmentText": speech,
+        "source": "dialogflow-weather-by-satheshrgs"
+    }
     
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))
