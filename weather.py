@@ -3,12 +3,14 @@ import os,json
 import pyowm
 import os
 
+
 app = Flask(__name__)
 owmapikey='6628ad3fd90a97fb39ff9793c7569874' #or provide your key here
 owm = pyowm.OWM(owmapikey)
 
+
 #geting and sending response to dialogflow
-@app.route('/20.46.150.26/api/users/resend_verification_code', methods=['POST'])
+@app.route('/webhook', methods=['POST'])
 def webhook():
     req = request.get_json(silent=True, force=True)
 
@@ -29,9 +31,17 @@ def processRequest(req):
     result = req.get("queryResult")
     parameters = result.get("parameters")
     city = parameters.get("ph_no")
-    txt1 = " here1 "
-    return {
-        "fulfillmentText": txt1,
+
+    
+    url = 'http://20.46.150.26/api/users/resend_verification_code/'
+    myobj = {'ph_no': city}
+
+    x = requests.post(url, data = myobj)
+    speech = "here1"
+
+    
+        return {
+        "fulfillmentText": speech,
         "source": "dialogflow-weather-by-satheshrgs"
         }
     
