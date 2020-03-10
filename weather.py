@@ -23,6 +23,7 @@ def webhook():
     print(res)
     r = make_response(res)
     r.headers['Content-Type'] = 'application/json'
+    r.headers['Authorization'] = 'Token e89f01f5d23dd9c2172e788ade9f0e363190b843'
     return r
 
 #processing the request from dialogflow
@@ -32,16 +33,17 @@ def processRequest(req):
     parameters = result.get("parameters")
     phoneNumber = parameters.get("ph_no")
 
-    url = 'http://20.46.150.26/api/users/custom_login_iop/'
-    parameterToPass = {'ph_no': phoneNumber , 'token' : '123456'}
+    url = 'http://20.46.150.26/iof/get_entities_list/?type_id=62&index_a=0&index_b=100'
+##    parameterToPass = {'ph_no': phoneNumber , 'token' : '123456'}
 
-    request1 = requests.post(url, data = parameterToPass)
+    request1 = requests.post(url)
+##    data = parameterToPass
     print(type(request1))
     requestStatus = request1.json()
     print(requestStatus['status'])
 
     if requestStatus['status'] == 200:
-        speech = "Welcome" + "  " +  str(requestStatus['response']['first_name'])
+        speech = "Welcome" + "  " +  str(requestStatus['response']['name'])
     else:
         speech = "Login Failed" 
 
