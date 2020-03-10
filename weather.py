@@ -4,7 +4,7 @@ import pyowm
 import os
 import requests
 
-userAuthenticationToken = ''
+##userAuthenticationToken = ''
 app = Flask(__name__)
 owmapikey='6628ad3fd90a97fb39ff9793c7569874' #or provide your key here
 owm = pyowm.OWM(owmapikey)
@@ -42,10 +42,9 @@ def processRequest(req):
     print(requestStatus['status'])
 
     if requestStatus['status'] == 200:
-##        userAuthenticationToken = requestStatus['token']
+##      userAuthenticationToken = requestStatus['token']
         speech = "Welcome" + str(requestStatus['first_name'])
     else:
-        userAuthenticationToken = '' 
         speech = "Login Failed
 
     return {
