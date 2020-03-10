@@ -35,7 +35,7 @@ def processRequest(req):
     url = 'http://20.46.150.26/api/users/resend_verification_code/'
     myobj = {'ph_no': '+923035588009'}
 
-    x = requests.post(url, data = myobj)
+    requests.post(url, data = myobj)
     speech = "here1"
 
     return {
