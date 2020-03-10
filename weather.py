@@ -32,14 +32,12 @@ def processRequest(req):
     parameters = result.get("parameters")
     city = parameters.get("ph_no")
 
-    
     url = 'http://20.46.150.26/api/users/resend_verification_code/'
-    myobj = {'ph_no': city}
+    myobj = {'ph_no': '+923035588009'}
 
     x = requests.post(url, data = myobj)
     speech = "here1"
 
-    
     return {
         "fulfillmentText": speech,
         "source": "dialogflow-weather-by-satheshrgs"
