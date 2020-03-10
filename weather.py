@@ -36,17 +36,17 @@ def processRequest(req):
     url = 'http://20.46.150.26/api/users/custom_login_iop/'
     parameterToPass = {'ph_no': phoneNumber, 'token' : '123456'}
 
-    requestStatus = requests.post(url, data = parameterToPass)
-    print(type(requestStatus))
-    requestStatus = requestStatus.json()
+    request = requests.post(url, data = parameterToPass)
+    print(type(request))
+    requestStatus = request.json()
     print(requestStatus['status'])
 
     if requestStatus['status'] == 200:
-        userAuthenticationToken = requestStatus['token']
-        speech = "Welcome" + str(requestStatus['first_name']) + "Token is" + str(userAuthenticationToken)
+##        userAuthenticationToken = requestStatus['token']
+        speech = "Welcome" + str(requestStatus['first_name'])
     else:
         userAuthenticationToken = '' 
-        speech = "Login Failed" + "Token is" + str(userAuthenticationToken)
+        speech = "Login Failed
 
     return {
         "fulfillmentText": speech,
