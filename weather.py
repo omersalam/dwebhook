@@ -59,8 +59,6 @@ def processRequest(req):
                 speech = speech + str("\n "+res['name'])
         else:
             speech = "Failed to fetech"
-    else:
-        speech = "Failed to execute"
 
      elif phoneNumber == 'Get Schedules' or phoneNumber == 'get schedules' or phoneNumber == 'Get schedules':
         url = 'http://20.46.150.26/iop/get_schedules_list/?day=1&start_date=2020-03-10&appliance_id=134'
@@ -69,12 +67,15 @@ def processRequest(req):
         requestStatus = request1.json()
         print(requestStatus['status'])
         if requestStatus['status'] == 200:
-            speech = "Scedule List"
+            speech = "Scedule List by date"
             for res in requestStatus['response']:
                 print(speech)
                 speech = speech + str("\n "+res['start_date'])
         else:
             speech = "Failed to fetech"
+    else:
+        speech = "Failed to execute"
+
     else:
         speech = "Failed to execute"
     return {
