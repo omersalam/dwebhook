@@ -43,7 +43,7 @@ def processRequest(req):
         requestStatus = request1.json()
         print(requestStatus['status'])
         if requestStatus['status'] == 200:
-            speech = "Welcome  " + str(requestStatus['response']['first_name'] + "Let's Begin")
+            speech = "Welcome  " + str(requestStatus['response']['first_name'] + "  Let's Begin")
         else:
             speech = "Login Failed"
     elif phoneNumber == 'Show devices' or phoneNumber == 'Show Devices' or phoneNumber == 'show devices':
