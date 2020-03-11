@@ -31,7 +31,7 @@ def processRequest(req):
     result = req.get("queryResult")
     parameters = result.get("parameters")
     phoneNumber = parameters.get("ph_no")
-    token1 = parameters.get(str("token"))
+    token1 = parameters.get("token")
 
     if phoneNumber == '+923035588009':
         url = 'http://20.46.150.26/api/users/custom_login_iop/'
