@@ -31,10 +31,11 @@ def processRequest(req):
     result = req.get("queryResult")
     parameters = result.get("parameters")
     phoneNumber = parameters.get("ph_no")
+    token1 = parameters.get("token")
 
     if phoneNumber == '+923035588009':
         url = 'http://20.46.150.26/api/users/custom_login_iop/'
-        parameterToPass = {'ph_no': phoneNumber , 'token' : '123456'}
+        parameterToPass = {'ph_no': phoneNumber , 'token' : token1 }
 ##    parameterToPass = {'Authorization': 'token e89f01f5d23dd9c2172e788ade9f0e363190b843'}
 ##    request1 = requests.get(url, headers={'Authorization': 'Token e89f01f5d23dd9c2172e788ade9f0e363190b843'})
         request1 = requests.post(url,data = parameterToPass)
