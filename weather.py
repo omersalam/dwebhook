@@ -61,6 +61,22 @@ def processRequest(req):
             speech = "Failed to fetech"
     else:
         speech = "Failed to execute"
+
+     elif phoneNumber == 'Get Schedules' or phoneNumber == 'get schedules' or phoneNumber == 'Get schedules':
+        url = 'http://20.46.150.26/iop/get_schedules_list/?day=1&start_date=2020-03-10&appliance_id=134'
+        request1 = requests.get(url, headers={'Authorization': 'Token e89f01f5d23dd9c2172e788ade9f0e363190b843'})
+        print(type(request1))
+        requestStatus = request1.json()
+        print(requestStatus['status'])
+        if requestStatus['status'] == 200:
+            speech = "Scedule List"
+            for res in requestStatus['response']:
+                print(speech)
+                speech = speech + str("\n "+res['start_date'])
+        else:
+            speech = "Failed to fetech"
+    else:
+        speech = "Failed to execute"
     return {
                 "fulfillmentText": speech,
         "source": "dialogflow-weather-by-satheshrgs"
