@@ -53,7 +53,10 @@ def processRequest(req):
         requestStatus = request1.json()
         print(requestStatus['status'])
         if requestStatus['status'] == 200:
-            speech = "Name of Devices\n" + str(requestStatus['response'][0]['name']) + "\n" + str(requestStatus['response'][1]['name'])
+            speech = "Name of Devices"
+            for res in requestStatus['response']:
+                print(speech)
+                speech = speech + str("\n "+res['name'])
         else:
             speech = "Failed to fetech"
     else:
