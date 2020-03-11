@@ -46,7 +46,7 @@ def processRequest(req):
             speech = "Welcome" + str(requestStatus['status'])
         else:
             speech = "Login Failed"
-    elif phoneNumber == 'Showdevices':
+    elif phoneNumber == 'Show devices':
         url = 'http://20.46.150.26/iof/get_entities_list/?type_id=62&index_a=0&index_b=100'
         request1 = requests.get(url, headers={'Authorization': 'Token e89f01f5d23dd9c2172e788ade9f0e363190b843'})
         print(type(request1))
