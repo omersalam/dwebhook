@@ -66,10 +66,10 @@ def processRequest(req):
         requestStatus = request1.json()
         print(requestStatus['status'])
         if requestStatus['status'] == 200:
-            speech = "Scedule List by date"
+            speech = "Scedule List"
             for res in requestStatus['response']:
                 print(speech)
-                speech = speech + str("\n Date: "+res['start_date'] + "\n Name: " + res['scheduled_by'] + "\n Temperature:" + res['temperature'])
+                speech = speech + str("\n Date: "+res['start_date'] + "\n Name: " + res['scheduled_by'] + "\n Temperature:" + res['temperature'] + "\n")
         else:
             speech = "Failed to fetech"
     else:
