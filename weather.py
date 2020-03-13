@@ -72,7 +72,7 @@ def processRequest(req):
         requestStatus = request1.json()
         print(requestStatus['status'])
         if requestStatus['status'] == 200:
-            speech = "Welcome added " + requestStatus['message']['message']
+            speech = "Welcome added "
         else:
             speech = "Can not add"
     elif phoneNumber == 'Show devices' or phoneNumber == 'Show Devices' or phoneNumber == 'show devices':
