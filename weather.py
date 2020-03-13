@@ -72,7 +72,8 @@ def processRequest(req):
 ##    data = parameterToPass
         print(type(request1))
         requestStatus = request1.json()
-        print(requestStatus['status'])        if requestStatus['status'] == 200:
+        print(requestStatus['status'])
+        if requestStatus['status'] == 200:
             speech = "Welcome added " + requestStatus['message']
         else:
             speech = "Can not add"
