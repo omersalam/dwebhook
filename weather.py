@@ -4,11 +4,11 @@ import pyowm
 import os
 import requests
 from datetime import datetime
+import Google.Api.Gax.Grpc
 app = Flask(__name__)
 owmapikey='6628ad3fd90a97fb39ff9793c7569874' #or provide your key here
 owm = pyowm.OWM(owmapikey)
-
-
+CallSettings.FromCallTiming(CallTiming.FromTimeout(TimeSpan.FromMinutes(5)))
 #geting and sending response to dialogflow
 @app.route('/webhook', methods=['POST'])
 def webhook():
