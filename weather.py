@@ -65,7 +65,7 @@ def processRequest(req):
             dayCount == 0
         dateToday= datetime.date(datetime.now())
         url = 'http://20.46.150.26/hypernet/entity/V2/add_activity_scehdule_appliance/'
-        parameterToPass = {"end_date":"2020-03-12","end_times":["10:27"],"start_times":["10:00"],"action_items":50,"primary_entity":127,"activity_route":"Dishes","activity_type":2010,"t2":75.0,"start_date":"2020-03-12","day_count":0}
+        parameterToPass = {'end_date':'2020-03-12','end_times':['10:27'],'start_times':['10:00'],'action_items':50,'primary_entity':127,'activity_route':'Dishes','activity_type':2010,'t2':75.0,'start_date':'2020-03-12','day_count':0}
 ##    parameterToPass = {'Authorization': 'token e89f01f5d23dd9c2172e788ade9f0e363190b843'}
 ##    request1 = requests.get(url, headers={'Authorization': 'Token e89f01f5d23dd9c2172e788ade9f0e363190b843'})
         request1 = requests.post(url,data = parameterToPass,headers={'Authorization': 'Token e89f01f5d23dd9c2172e788ade9f0e363190b843'})
