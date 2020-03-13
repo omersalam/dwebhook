@@ -41,7 +41,7 @@ def processRequest(req):
         parameterToPass = {'ph_no': phoneNumber , 'token' : token1 }
 ##    parameterToPass = {'Authorization': 'token e89f01f5d23dd9c2172e788ade9f0e363190b843'}
 ##    request1 = requests.get(url, headers={'Authorization': 'Token e89f01f5d23dd9c2172e788ade9f0e363190b843'})
-        request1 = requests.post(url,data = parameterToPass, headers={'Authorization': 'Token e89f01f5d23dd9c2172e788ade9f0e363190b843'})
+        request1 = requests.post(url,data = parameterToPass)
 ##    data = parameterToPass
         print(type(request1))
         requestStatus = request1.json()
@@ -57,7 +57,7 @@ def processRequest(req):
                            'primary_entity':127,'activity_route':'Dishes','activity_type':2010,'t2':75.0,'start_date':'2020-03-12','day_count':4}
 ##    parameterToPass = {'Authorization': 'token e89f01f5d23dd9c2172e788ade9f0e363190b843'}
 ##    request1 = requests.get(url, headers={'Authorization': 'Token e89f01f5d23dd9c2172e788ade9f0e363190b843'})
-        request1 = requests.post(url,data = parameterToPass)
+        request1 = requests.post(url,data = parameterToPass,  headers={'Authorization': 'Token e89f01f5d23dd9c2172e788ade9f0e363190b843'})
 ##    data = parameterToPass
         print(type(request1))
         requestStatus = request1.json()
