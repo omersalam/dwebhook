@@ -41,7 +41,7 @@ def processRequest(req):
         parameterToPass = {'ph_no': phoneNumber , 'token' : token1 }
 ##    parameterToPass = {'Authorization': 'token e89f01f5d23dd9c2172e788ade9f0e363190b843'}
 ##    request1 = requests.get(url, headers={'Authorization': 'Token e89f01f5d23dd9c2172e788ade9f0e363190b843'})
-        request1 = requests.post(url,data = parameterToPass)
+        request1 = requests.post(url,data = parameterToPass, headers={'Authorization': 'Token e89f01f5d23dd9c2172e788ade9f0e363190b843'})
 ##    data = parameterToPass
         print(type(request1))
         requestStatus = request1.json()
