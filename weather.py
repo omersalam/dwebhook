@@ -54,9 +54,9 @@ def processRequest(req):
             
     elif  phoneNumber == 'make' or phoneNumber == 'Make':
         if(temperature == 'hot'):
-            temperature = 60.0
+            float(temperature) = 60.0
         else:
-            temperature = 50.0
+            float(temperature) = 50.0
         if(dayCount == 'today'):
             dayCount == 1
         else:
@@ -64,7 +64,7 @@ def processRequest(req):
         dateToday= datetime.date(datetime.now())
         url = 'http://20.46.150.26/hypernet/entity/V2/add_activity_scehdule_appliance/'
         parameterToPass = {"end_date":"2020-03-14","end_times":["11:38"],"start_times":["11:30"],
-                           "action_items":"70","primary_entity": primaryEntity,"activity_route":"Dishes","activity_type":2010,"t2":temperature,"start_date":"2020-03-14","day_count": dayCount}
+                           "action_items":"70","primary_entity": primaryEntity,"activity_route":"Dishes","activity_type":2010,"t2":float(temperature),"start_date":"2020-03-14","day_count": dayCount}
         request1 = requests.post(url, json = parameterToPass, headers={'Authorization': 'Token e89f01f5d23dd9c2172e788ade9f0e363190b843'})
         print(type(request1))
         requestStatus = request1.json()
