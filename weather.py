@@ -54,7 +54,7 @@ def processRequest(req):
             
     elif  phoneNumber == 'make' or phoneNumber == 'Make':
         if(temperature == 'hot'):
-            temperature1 = 50.0
+            temperature1 = 75.0
         else:
             temperature1 = 50.0
         if(dayCount == 'today'):
