@@ -34,7 +34,7 @@ def processRequest(req):
     date = parameters.get("date")
     dayCount1 = parameters.get("dayCount")
     temperature1 = parameters.get("temperature")
-    time1 = parameters.get("time")
+    endTime1 = parameters.get("endTime")
     startTime1 = parameters.get("startTime")
 
     if phoneNumber == '+923035588009':
@@ -67,7 +67,7 @@ def processRequest(req):
             dayCount2 = 1
         dateToday = datetime.date(datetime.now())
         url = 'http://20.46.150.26/hypernet/entity/V2/add_activity_scehdule_appliance/'
-        parameterToPass = {"end_date": str(dateToday),"end_times":["11:38"],"start_times":[ str(startTime1)],
+        parameterToPass = {"end_date": str(dateToday),"end_times":[str(endTime1)],"start_times":[ str(startTime1)],
                             "action_items": str(temperature2),"primary_entity": primaryEntity ,"activity_route":"Dishes","activity_type":2010,"t2": 75.0 ,"start_date": str(dateToday),"day_count": dayCount2}
         request1 = requests.post(url, json = parameterToPass, headers={'Authorization': 'Token e89f01f5d23dd9c2172e788ade9f0e363190b843'})
         print(type(request1))
