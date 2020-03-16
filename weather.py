@@ -49,8 +49,8 @@ def processRequest(req):
         requestStatus = request1.json()
         print(requestStatus['status'])
         if requestStatus['status'] == 200: 
-            speech = "Welcome  " + str(requestStatus['response']['first_name'] + "  Let's Begin")
-            key = "Token " + str(requestStatus['response']['token'])
+            speech = "Welcome " + str(requestStatus['response']['first_name'] + "  Let's Begin") + "Token  " + str(requestStatus['response']['token'])
+            key = "Token  " + str(requestStatus['response']['token'])
         else:
             speech = "Login Failed"
             
