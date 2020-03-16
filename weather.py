@@ -7,6 +7,7 @@ from datetime import datetime
 app = Flask(__name__)
 owmapikey='6628ad3fd90a97fb39ff9793c7569874' #or provide your key here
 owm = pyowm.OWM(owmapikey)
+key = ''
 #geting and sending response to dialogflow
 @app.route('/webhook', methods=['POST'])
 def webhook():
@@ -39,7 +40,7 @@ def processRequest(req):
 
     if phoneNumber == '+923035588009':
         url = 'http://20.46.150.26/api/users/custom_login_iop/'
-        parameterToPass = {'ph_no': phoneNumber , 'token' : token1 }
+        parameterToPass = {'ph_no': phoneNumber , 'token' : '123456' }
 ##    parameterToPass = {'Authorization': 'token e89f01f5d23dd9c2172e788ade9f0e363190b843'}
 ##    request1 = requests.get(url, headers={'Authorization': 'Token e89f01f5d23dd9c2172e788ade9f0e363190b843'})
         request1 = requests.post(url,data = parameterToPass)
@@ -48,6 +49,7 @@ def processRequest(req):
         requestStatus = request1.json()
         print(requestStatus['status'])
         if requestStatus['status'] == 200:
+            key =  str(requestStatus['response']['token']
             speech = "Welcome  " + str(requestStatus['response']['first_name'] + "  Let's Begin")
         else:
             speech = "Login Failed"
@@ -68,7 +70,8 @@ def processRequest(req):
         dateToday = datetime.date(datetime.now())
         url = 'http://20.46.150.26/hypernet/entity/V2/add_activity_scehdule_appliance/'
         parameterToPass = {"end_date": str(dateToday),"end_times":[str(endTime1)],"start_times":[ str(startTime1)],
-                            "action_items": str(temperature2),"primary_entity": primaryEntity ,"activity_route":"Dishes","activity_type":2010,"t2": 75.0 ,"start_date": str(dateToday),"day_count": dayCount2}
+                            "action_items": str(temperature2),"primary_entity": primaryEntity ,
+                           "activity_route":"Dishes","activity_type":2010,"t2": 75.0 ,"start_date": str(dateToday),"day_count": dayCount2}
         request1 = requests.post(url, json = parameterToPass, headers={'Authorization': 'Token e89f01f5d23dd9c2172e788ade9f0e363190b843'})
         print(type(request1))
         requestStatus = request1.json()
@@ -79,7 +82,7 @@ def processRequest(req):
             speech = "Can not add"
     elif phoneNumber == 'Show devices' or phoneNumber == 'Show Devices' or phoneNumber == 'show devices':
         url = 'http://20.46.150.26/iof/get_entities_list/?type_id=62&index_a=0&index_b=100'
-        request1 = requests.get(url, headers={'Authorization': 'Token e89f01f5d23dd9c2172e788ade9f0e363190b843'})
+        request1 = requests.get(url, headers={'Authorization': key})
         print(type(request1))
         requestStatus = request1.json()
         print(requestStatus['status'])
