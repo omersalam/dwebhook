@@ -36,10 +36,10 @@ def processRequest(req):
     temperature1 = parameters.get("temperature")
     dayCount1 = parameters.get("dayCount")
     
-    if(dayCount1 == 'today'):
-        dayCount2 == 1
-    else:
-        dayCount2 == 0
+##    if(dayCount1 == 'today'):
+##        dayCount2 == 1
+##    else:
+##        dayCount2 == 0
     if phoneNumber == '+923035588009':
         url = 'http://20.46.150.26/api/users/custom_login_iop/'
         parameterToPass = {'ph_no': phoneNumber , 'token' : token1 }
