@@ -82,7 +82,7 @@ def processRequest(req):
             speech = "Can not add"
     elif phoneNumber == 'Show devices' or phoneNumber == 'Show Devices' or phoneNumber == 'show devices':
         url = 'http://20.46.150.26/iof/get_entities_list/?type_id=62&index_a=0&index_b=100'
-        request1 = requests.get(url, headers={'Authorization': key})
+        request1 = requests.get(url, headers={'Authorization': str(key)})
         print(type(request1))
         requestStatus = request1.json()
         print(requestStatus['status'])
