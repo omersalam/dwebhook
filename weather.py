@@ -53,15 +53,15 @@ def processRequest(req):
             speech = "Login Failed"
             
     elif  phoneNumber == 'make' or phoneNumber == 'Make':
-        if(temperature1 == 'hot'):
-            temperature2 = 75.0
-        else:
-            temperature2 = 50.0
-        if(dayCount1 == 'today'):
-            dayCount2 == 1
-        else:
-            dayCount2 == 0
-        dateToday= datetime.date(datetime.now())
+##        if(temperature1 == 'hot'):
+##            temperature2 = 75.0
+##        else:
+##            temperature2 = 50.0
+##        if(dayCount1 == 'today'):
+##            dayCount2 == 1
+##        else:
+##            dayCount2 == 0
+##        dateToday= datetime.date(datetime.now())
         url = 'http://20.46.150.26/hypernet/entity/V2/add_activity_scehdule_appliance/'
         parameterToPass = {"end_date":"2020-03-16","end_times":["11:38"],"start_times":["11:30"],
                             "action_items":"70","primary_entity":127,"activity_route":"Dishes","activity_type":2010,"t2":75.0,"start_date":"2020-03-16","day_count":1}
