@@ -61,7 +61,7 @@ def processRequest(req):
             dayCount2 = 0
         elif(dayCount1 == 'tomorrow'):
             dayCount2 = 1
-        else
+        else:
             dayCount2 = 1
         dateToday = datetime.date(datetime.now())
         url = 'http://20.46.150.26/hypernet/entity/V2/add_activity_scehdule_appliance/'
