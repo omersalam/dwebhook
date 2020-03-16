@@ -55,12 +55,12 @@ def processRequest(req):
     elif  phoneNumber == 'make' or phoneNumber == 'Make':
         if(temperature1 == 'hot'):
             temperature2 = 75.0
+        elif(temperature1 == 'warm'):
+            temperature2 = 60.0
+        elif(dayCount1 == 'today'):
+            dayCount2 == 1
         else:
-            temperature2 = 50.0
-##        if(dayCount1 == 'today'):
-##            dayCount2 == 1
-##        else:
-##            dayCount2 == 0
+            dayCount2 == 0
 ##        dateToday= datetime.date(datetime.now())
         url = 'http://20.46.150.26/hypernet/entity/V2/add_activity_scehdule_appliance/'
         parameterToPass = {"end_date":"2020-03-16","end_times":["11:38"],"start_times":["11:30"],
