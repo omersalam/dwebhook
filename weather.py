@@ -7,7 +7,7 @@ from datetime import datetime
 app = Flask(__name__)
 owmapikey='6628ad3fd90a97fb39ff9793c7569874' #or provide your key here
 owm = pyowm.OWM(owmapikey)
-key = 'Token e89f01f5d23dd9c2172e788ade9f0e363190b843'
+key = ''
 #geting and sending response to dialogflow
 @app.route('/webhook', methods=['POST'])
 def webhook():
@@ -48,7 +48,8 @@ def processRequest(req):
         print(type(request1))
         requestStatus = request1.json()
         print(requestStatus['status'])
-        if requestStatus['status'] == 200: 
+        if requestStatus['status'] == 200:
+            key = 'Token e89f01f5d23dd9c2172e788ade9f0e363190b843'
             speech = "Welcome " + str(requestStatus['response']['first_name'] + "  Let's Begin") + "Token  " + str(requestStatus['response']['token'])
 
         else:
