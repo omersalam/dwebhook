@@ -48,9 +48,9 @@ def processRequest(req):
         print(type(request1))
         requestStatus = request1.json()
         print(requestStatus['status'])
-        if requestStatus['status'] == 200:
-            key =  str(requestStatus['response']['token']
+        if requestStatus['status'] == 200: 
             speech = "Welcome  " + str(requestStatus['response']['first_name'] + "  Let's Begin")
+            key =  str(requestStatus['response']['token'])
         else:
             speech = "Login Failed"
             
