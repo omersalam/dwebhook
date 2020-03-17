@@ -101,7 +101,7 @@ def processRequest(req):
 ##      datetime.date(datetime.now()) 
         nextDate = dateToday + datetime.timedelta(days = 1) 
 ##        dateTime = datetime.time(datetime.now())
-        url = ('http://20.46.150.26/iop/get_schedules_list/?day=1&start_date=' + str(nextDate) + '&appliance_id=127')
+        url = ('http://20.46.150.26/iop/get_schedules_list/?day=1&start_date=' + str(dateToday) + '&appliance_id=127')
         request1 = requests.get(url, headers={'Authorization': key})
         print(type(request1))
         requestStatus = request1.json()
