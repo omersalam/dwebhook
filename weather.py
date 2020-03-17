@@ -96,7 +96,7 @@ def processRequest(req):
         else:
             speech = "Failed to fetech"
     elif phoneNumber == 'Get Schedules' or phoneNumber == 'get schedules' or phoneNumber == 'Get schedules':
-        str(dateToday) = datetime.date(datetime.now())
+        dateToday = datetime.date(datetime.now())
 ##        dateTime = datetime.time(datetime.now())
         url = 'http://20.46.150.26/iop/get_schedules_list/?day=1&start_date={dateToday}&appliance_id=127'
         request1 = requests.get(url, headers={'Authorization': key})
