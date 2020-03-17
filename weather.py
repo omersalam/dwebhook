@@ -8,6 +8,7 @@ app = Flask(__name__)
 owmapikey='6628ad3fd90a97fb39ff9793c7569874' #or provide your key here
 owm = pyowm.OWM(owmapikey)
 key = ''
+count = 0
 #geting and sending response to dialogflow
 @app.route('/webhook', methods=['POST'])
 def webhook():
@@ -110,9 +111,9 @@ def processRequest(req):
             for res in requestStatus['response']:
                 print(speech)
                 global count
-                count = 0
                 if res['start_date'] == str(dateToday):
-                    speech = speech  + "Schedule" + str("\n Date: "+res['start_date'] + "\n Temperature:" + res['temperature'] + "\n")
+                    count += 1
+                    speech = speech + str("\n Date: "+res['start_date'] + "\n Temperature:" + res['temperature'] + "\n") + str(count)
         else:
             speech = "Failed to fetech"
 
