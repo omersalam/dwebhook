@@ -112,7 +112,7 @@ def processRequest(req):
                 global count
                 count = 0
                 if res['start_date'] == str(dateToday):
-                    speech = speech  + "Schedule" + str(len(res['start_date'])+"\n Date: "+res['start_date'] + "\n Temperature:" + res['temperature'] + "\n")
+                    speech = speech  + "Schedule" + str("\n Date: "+res['start_date'] + "\n Temperature:" + res['temperature'] + "\n")
         else:
             speech = "Failed to fetech"
 
