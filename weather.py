@@ -107,13 +107,13 @@ def processRequest(req):
 ##        print (datetime.now() - timedelta(hours=5))
 ##        updatedTime = (datetime.now() + timedelta(hours=5)) 
         if requestStatus['status'] == 200:
-            speech = "Scedule List"
+            speech = "Total Scedule List"
             for res in requestStatus['response']:
                 print(speech)
                 global count
                 if res['start_date'] == str(dateToday):
                     count += 1
-                    speech = speech + str("\n Date: "+res['start_date'] + "\n Temperature:" + res['temperature'] + "\n") + str(count)
+                    speech = speech + str(count) +  str("\n Date: "+res['start_date'] + "\n Temperature:" + res['temperature'] + "\n")  
         else:
             speech = "Failed to fetech"
 
