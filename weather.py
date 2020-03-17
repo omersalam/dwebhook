@@ -27,6 +27,7 @@ def webhook():
 
 #processing the request from dialogflow
 def processRequest(req):
+    global count
     
     result = req.get("queryResult")
     parameters = result.get("parameters")
@@ -113,7 +114,6 @@ def processRequest(req):
             speech = "Scedule List"
             for res in requestStatus['response']:
                 print(speech)
-                global count
                 if res['start_date'] == str(yesterday.strftime('%Y-%m-%d')):
                     count += 1
                     speech = speech  +  str("\n Date: "+res['start_date'] + "\n Temperature:" + res['temperature'] + "\n")
