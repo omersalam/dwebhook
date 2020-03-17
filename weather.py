@@ -96,7 +96,7 @@ def processRequest(req):
                 speech = speech + str("\n "+res['name'])
         else:
             speech = "Failed to fetech"
-    elif phoneNumber == 'Schedule of tomorrow' or phoneNumber == 'Schedule Of Tomorrow' or phoneNumber == 'schedule of tomorrow' +  or phoneNumber == 'Schedule of Tomorrow':
+    elif phoneNumber == 'Schedule of tomorrow' or phoneNumber == 'Schedule Of Tomorrow' or phoneNumber == 'schedule of tomorrow'  or phoneNumber == 'Schedule of Tomorrow':
         dateToday = datetime.date(datetime.now())
 ##        dateTime = datetime.time(datetime.now())
         presentday = datetime.now() 
@@ -133,7 +133,6 @@ def processRequest(req):
             speech = "Scedule List"
             for res in requestStatus['response']:
                 print(speech)
-                global count
                 if res['start_date'] == str(dateToday):
                     count += 1
                     speech = speech  +  str("\n Date: "+res['start_date'] + "\n Temperature:" + res['temperature'] + "\n")
