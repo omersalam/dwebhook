@@ -109,7 +109,7 @@ def processRequest(req):
             speech = "Scedule List"
             for res in requestStatus['response']:
                 print(speech)
-                if res['start_date'] == "2020-03-20":
+                if res['start_date'] == str(dateToday):
                     speech = speech + str("\n Date: "+res['start_date'] + "\n Temperature:" + res['temperature'] + "\n")
         else:
             speech = "Failed to fetech"
