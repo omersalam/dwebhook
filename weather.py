@@ -109,6 +109,7 @@ def processRequest(req):
             speech = "Scedule List"
             for res in requestStatus['response']:
                 print(speech)
+                global count
                 count = 0
                 if res['start_date'] == str(dateToday):
                     count += 1
