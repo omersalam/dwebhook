@@ -99,7 +99,9 @@ def processRequest(req):
     elif phoneNumber == 'Get Schedules' or phoneNumber == 'get schedules' or phoneNumber == 'Get schedules':
         dateToday = datetime.date(datetime.now())
 ##        dateTime = datetime.time(datetime.now())
-        url = ('http://20.46.150.26/iop/get_schedules_list/?day=1&start_date=' + str(dateToday) + '&appliance_id=127')
+        presentday = datetime.now() 
+        yesterday = presentday + timedelta(1)
+        url = ('http://20.46.150.26/iop/get_schedules_list/?day=1&start_date=' + str(yesterday.strftime('%Y-%m-%d')) + '&appliance_id=127')
         request1 = requests.get(url, headers={'Authorization': key})
         print(type(request1))
         requestStatus = request1.json()
@@ -117,7 +119,6 @@ def processRequest(req):
             speech = "Total Schedules "+ str(count) +  "  " + speech          
         else:
             speech = "Failed to fetech"
-
     elif phoneNumber == 'log out' or phoneNumber == 'Log Out' or phoneNumber == 'Log out':
         key = '0'
         speech = "Log Out"
