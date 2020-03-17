@@ -110,7 +110,7 @@ def processRequest(req):
             for res in requestStatus['response']:
                 print(speech)
                 if res['start_date'] == "2020-03-20":
-                    speech = speech + str("\n Date: "+res['start_date'] + "\n Name: " + res['scheduled_by'] + "\n Temperature:" + res['temperature'] + "\n")
+                    speech = speech + str("\n Date: "+res['start_date'] + "\n Temperature:" + res['temperature'] + "\n")
         else:
             speech = "Failed to fetech"
 
