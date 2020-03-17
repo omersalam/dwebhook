@@ -96,21 +96,21 @@ def processRequest(req):
         else:
             speech = "Failed to fetech"
     elif phoneNumber == 'Get Schedules' or phoneNumber == 'get schedules' or phoneNumber == 'Get schedules':
-        dateToday = datetime.date(datetime.now())
-        dateTime = datetime.time(datetime.now())
+##        dateToday = datetime.date(datetime.now())
+##        dateTime = datetime.time(datetime.now())
         url = 'http://20.46.150.26/iop/get_schedules_list/?day=1&start_date=2020-03-18&appliance_id=127'
         request1 = requests.get(url, headers={'Authorization': key})
         print(type(request1))
         requestStatus = request1.json()
         print(requestStatus['status'])
-        print (datetime.now() - timedelta(hours=5))
-        updatedTime = (datetime.now() + timedelta(hours=5)) 
+##        print (datetime.now() - timedelta(hours=5))
+##        updatedTime = (datetime.now() + timedelta(hours=5)) 
         if requestStatus['status'] == 200:
             speech = "Scedule List"
             for res in requestStatus['response']:
                 print(speech)
-                if res['start_date'] == '2020-03-18'
-                speech = speech + str("\n Date: "+res['start_date'] + "\n Name: " + res['scheduled_by'] + "\n Temperature:" + res['temperature'] + "\n")
+                if res['start_date'] == "2020-03-18":
+                    speech = speech + str("\n Date: "+res['start_date'] + "\n Name: " + res['scheduled_by'] + "\n Temperature:" + res['temperature'] + "\n")
         else:
             speech = "Failed to fetech"
 
