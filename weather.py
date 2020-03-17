@@ -113,7 +113,7 @@ def processRequest(req):
             for res in requestStatus['response']:
                 print(speech)
                 global count
-                if res['start_date'] == str(dateToday):
+                if res['start_date'] == str(yesterday.strftime('%Y-%m-%d')):
                     count += 1
                     speech = speech  +  str("\n Date: "+res['start_date'] + "\n Temperature:" + res['temperature'] + "\n")
             speech = "Total Schedules "+ str(count) +  "  " + speech          
