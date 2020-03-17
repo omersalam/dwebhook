@@ -108,14 +108,12 @@ def processRequest(req):
                 speech = speech + str("\n Date: "+res['start_date'] + "\n Name: " + res['scheduled_by'] + "\n Temperature:" + res['temperature'] + "\n")
         else:
             speech = "Failed to fetech"
-    else:
-        speech = "Failed to execute"
 
     elif phoneNumber == 'log out' or phoneNumber == 'Log Out' or phoneNumber == 'Log out':
-        global key
-        key = ''
+        key = '0'
         speech = "Log Out"
-        speech = "Failed to fetech"
+    else:
+        speech = "Failed to execute"
     return {
                 "fulfillmentText": speech,
         "source": "dialogflow-weather-by-satheshrgs"
