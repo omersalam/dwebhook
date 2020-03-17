@@ -96,7 +96,7 @@ def processRequest(req):
                 speech = speech + str("\n "+res['name'])
         else:
             speech = "Failed to fetech"
-    elif phoneNumber == 'Get Schedules' or phoneNumber == 'get schedules' or phoneNumber == 'Get schedules':
+    elif phoneNumber == 'Schedule of tomorrow' or phoneNumber == 'Schedule Of Tomorrow' or phoneNumber == 'schedule of tomorrow' +  or phoneNumber == 'Schedule of Tomorrow':
         dateToday = datetime.date(datetime.now())
 ##        dateTime = datetime.time(datetime.now())
         presentday = datetime.now() 
@@ -114,6 +114,27 @@ def processRequest(req):
                 print(speech)
                 global count
                 if res['start_date'] == str(yesterday.strftime('%Y-%m-%d')):
+                    count += 1
+                    speech = speech  +  str("\n Date: "+res['start_date'] + "\n Temperature:" + res['temperature'] + "\n")
+            speech = "Total Schedules "+ str(count) +  "  " + speech          
+        else:
+            speech = "Failed to fetech"
+
+    elif phoneNumber == 'Get Schedules' or phoneNumber == 'get schedules' or phoneNumber == 'Get schedules':
+        dateToday = datetime.date(datetime.now())
+        url = ('http://20.46.150.26/iop/get_schedules_list/?day=1&start_date=' + str(dateToday) + '&appliance_id=127')
+        request1 = requests.get(url, headers={'Authorization': key})
+        print(type(request1))
+        requestStatus = request1.json()
+        print(requestStatus['status'])
+##        print (datetime.now() - timedelta(hours=5))
+##        updatedTime = (datetime.now() + timedelta(hours=5)) 
+        if requestStatus['status'] == 200:
+            speech = "Scedule List"
+            for res in requestStatus['response']:
+                print(speech)
+                global count
+                if res['start_date'] == str(dateToday):
                     count += 1
                     speech = speech  +  str("\n Date: "+res['start_date'] + "\n Temperature:" + res['temperature'] + "\n")
             speech = "Total Schedules "+ str(count) +  "  " + speech          
