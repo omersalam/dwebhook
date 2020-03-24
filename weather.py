@@ -69,7 +69,7 @@ def processRequest(req):
             # global deviceID
             # check = int(primaryEntity)
             for res in requestStatus['response']:
-                speech = speech + int("\n "+res['id'])
+                speech = speech + str("\n "+int(res['id']))
             # for res1 in requestStatus['response']:
             #     if res1['id'] == 127:
             #         deviceID = 127
