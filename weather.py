@@ -69,10 +69,10 @@ def processRequest(req):
             global deviceID
             for res in requestStatus['response']:
                 speech = speech + str("\n "+res['name'])
-                if int(primaryEntity) == res['id']:
-                    deviceID = int(primaryEntity)
+                if primaryEntity == res['id']:
+                    deviceID = primaryEntity
                 else:
-                    deviceID = 0
+                    deviceID = 1
         else:
             speech = "Failed to display devices"
 ###############################Show device End##########################################################################
