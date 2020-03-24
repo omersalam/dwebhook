@@ -67,9 +67,10 @@ def processRequest(req):
         if requestStatus['status'] == 200:
             speech = "Name of Devices" + str(int(primaryEntity)) + "up"
             global deviceID
+            check = int(primaryEntity)
             for res in requestStatus['response']:
                 speech = speech + str("\n "+res['name'])
-                if res['id'] == primaryEntity:
+                if res['id'] == check:
                     deviceID = primaryEntity
                 else:
                     deviceID = 1
