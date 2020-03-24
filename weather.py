@@ -70,8 +70,8 @@ def processRequest(req):
             check = int(primaryEntity)
             for res in requestStatus['response']:
                 speech = speech + str("\n "+res['name'])
-            for res in requestStatus['response']:
-                if res['id'] == 127:
+            for res1 in requestStatus['response']:
+                if res1['id'] == 127:
                     deviceID = 127
                 else:
                     deviceID = 34
