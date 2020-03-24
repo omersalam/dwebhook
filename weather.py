@@ -66,15 +66,15 @@ def processRequest(req):
         print(requestStatus['status'])
         if requestStatus['status'] == 200:
             speech = "Name of Devices" + str(int(primaryEntity)) + "up"
-            global deviceID
-            check = int(primaryEntity)
+            # global deviceID
+            # check = int(primaryEntity)
             for res in requestStatus['response']:
-                speech = speech + str("\n "+res['type'])
-            for res1 in requestStatus['response']:
-                if res1['id'] == 127:
-                    deviceID = 127
-                else:
-                    deviceID = 34
+                speech = speech + str("\n "+res['module'])
+            # for res1 in requestStatus['response']:
+            #     if res1['id'] == 127:
+            #         deviceID = 127
+            #     else:
+            #         deviceID = 34
         else:
             speech = "Failed to display devices"
 ###############################Show device End##########################################################################
