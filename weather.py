@@ -65,7 +65,7 @@ def processRequest(req):
         requestStatus = request1.json()
         print(requestStatus['status'])
         if requestStatus['status'] == 200:
-            speech = "Name of Devices" + str(int(primaryEntity)) + "up" + requestStatus['response']['id'] + "up1"
+            speech = "Name of Devices" + str(int(primaryEntity)) + "up"
             global deviceID
             check = int(primaryEntity)
             for res in requestStatus['response']:
