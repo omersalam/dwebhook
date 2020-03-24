@@ -71,9 +71,9 @@ def processRequest(req):
             for res in requestStatus['response']:
                 speech = speech + str("\n "+res['name'])
                 if res['id'] == check:
-                    deviceID = primaryEntity
+                    deviceID = check
                 else:
-                    deviceID = 127
+                    deviceID = 34
         else:
             speech = "Failed to display devices"
 ###############################Show device End##########################################################################
