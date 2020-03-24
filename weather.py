@@ -70,7 +70,7 @@ def processRequest(req):
             for res in requestStatus['response']:
                 speech = speech + str("\n "+res['name'])
                 if int(primaryEntity) == res['id']:
-                    deviceID = primaryEntity
+                    deviceID = int(primaryEntity)
                 else:
                     deviceID = 0
         else:
@@ -90,7 +90,7 @@ def processRequest(req):
 ##        print (datetime.now() - timedelta(hours=5))
 ##        updatedTime = (datetime.now() + timedelta(hours=5)) 
         if requestStatus['status'] == 200:
-            speech = "Scedule List"
+            speech = "Scedule List" + str(deviceID)
             for res in requestStatus['response']:
                 print(speech)
                 if res['start_date'] == str(yesterday.strftime('%Y-%m-%d')):
@@ -98,7 +98,7 @@ def processRequest(req):
                     speech = speech  +  str("\n Date: "+res['start_date'] + "\n Temperature:" + res['temperature'] + "\n")
             speech = "Total Schedules "+ str(count) +  "  " + speech          
         else:
-            speech = "Failed to fetech"
+            speech = "Failed to fetech"+ str(deviceID)
 ###########################################################select device###########################################
 
 ###############################################################################Get schedules#######################
