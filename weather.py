@@ -73,7 +73,7 @@ def processRequest(req):
                 if res['id'] == check:
                     deviceID = primaryEntity
                 else:
-                    deviceID = 1
+                    deviceID = 127
         else:
             speech = "Failed to display devices"
 ###############################Show device End##########################################################################
