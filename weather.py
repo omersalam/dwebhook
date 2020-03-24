@@ -33,7 +33,7 @@ def processRequest(req):
     incomingChecker = parameters.get("incoming")
     phoneNumber = parameters.get("ph_no")
     token1 = parameters.get("token")
-    primaryEntity = parameters.get("id")
+    primaryEntity = parameters.get("id1")
     date = parameters.get("date")
     dayCount1 = parameters.get("dayCount")
     temperature1 = parameters.get("temperature")
@@ -71,7 +71,7 @@ def processRequest(req):
             for res in requestStatus['response']:
                 speech = speech + str("\n "+res['name'])
             for res1 in requestStatus['response']:
-                if res1['type'] == 62:
+                if res1['id'] == 127:
                     deviceID = 127
                 else:
                     deviceID = 34
