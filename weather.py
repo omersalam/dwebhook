@@ -71,7 +71,7 @@ def processRequest(req):
             for res in requestStatus['response']:
                 speech = speech + str("\n "+ str(res['id'])) + str(check)
             for res1 in requestStatus['response']:
-                if str(res1['id']) == str(check):
+                if res1['id'] == check:
                     deviceID = 127
                 else:
                     deviceID = 34
