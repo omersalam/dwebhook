@@ -109,7 +109,7 @@ def processRequest(req):
         speech = "Failed to execute"
     return {
                 "fulfillmentText": speech,
-        "source": "dialogflow-weather-by-satheshrgs"
+        "source": ""
     }
     
 if __name__ == '__main__':
