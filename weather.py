@@ -70,13 +70,11 @@ def processRequest(req):
             check = int(primaryEntity)
             for res in requestStatus['response']:
                 speech = speech + str("\n "+ str(res['id'])) + str(check)
-                if int(res['id']) == int(check):
+                if res['id'] == check:
                     deviceID = 127
-                else:
-                    deviceID = 34
         else:
             speech = "Failed to display devices"
-###############################Show device End##########################################################################
+###############################Show devices End##########################################################################
     elif phoneNumber == 'Schedule of tomorrow' or phoneNumber == 'Schedule Of Tomorrow' or phoneNumber == 'schedule of tomorrow'  or phoneNumber == 'Schedule of Tomorrow':
         count = 0
         dateToday = datetime.date(datetime.now())
